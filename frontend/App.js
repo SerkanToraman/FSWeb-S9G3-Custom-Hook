@@ -3,10 +3,13 @@ import axios from "axios";
 
 import Charts from "./components/Charts";
 import Navbar from "./components/Navbar";
+import { useInput } from "./hooks/geceModuAc";
 
 const App = () => {
   const [coinData, setCoinData] = useState([]);
-  const [geceModu, setGeceModu] = useState(false);
+  //const [geceModu, setGeceModu] = useState(false); custom hook ile degisti;
+  const [geceModuSec, setGeceModuSec]=useInput();
+
 
   useEffect(() => {
     axios
@@ -17,8 +20,8 @@ const App = () => {
       .catch(err => console.log(err));
   }, []);
   return (
-    <div className={geceModu ? "dark-mode App" : "App"}>
-      <Navbar geceModu={geceModu} setGeceModu={setGeceModu} />
+    <div className={geceModuSec ? "dark-mode App" : "App"}>
+      <Navbar geceModu={geceModuSec} setGeceModu={setGeceModuSec} />
       <Charts coinData={coinData} />
     </div>
   );
