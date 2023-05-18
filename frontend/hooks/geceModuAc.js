@@ -1,8 +1,14 @@
-import { useState } from "react";
+import {useStorageInput} from "./LocalStorageKullan"
 
 export const useInput = () => {
-  const [geceModuHook,SetFeceModuHook] = useState(false);
 
-  return [geceModuHook, SetFeceModuHook];
+  const [value,SetValue] = useStorageInput("geceModu",false);
+
+  // const toggleMode = e => {
+  //   e.preventDefault();
+  //   SetValue(!value);
+  // };
+
+  return [value, SetValue];
 };
 

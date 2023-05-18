@@ -6,9 +6,16 @@ import Navbar from "./components/Navbar";
 import { useInput } from "./hooks/geceModuAc";
 
 const App = () => {
+
+
+ 
+
   const [coinData, setCoinData] = useState([]);
   //const [geceModu, setGeceModu] = useState(false); custom hook ile degisti;
-  const [geceModuSec, setGeceModuSec]=useInput();
+  const [geceModuSec, SetValue]=useInput();
+ 
+  
+ 
 
 
   useEffect(() => {
@@ -19,9 +26,11 @@ const App = () => {
       .then(res => setCoinData(res.data))
       .catch(err => console.log(err));
   }, []);
+
+
   return (
     <div className={geceModuSec ? "dark-mode App" : "App"}>
-      <Navbar geceModu={geceModuSec} setGeceModu={setGeceModuSec} />
+      <Navbar geceModu={geceModuSec} setGeceModu={SetValue} />
       <Charts coinData={coinData} />
     </div>
   );
